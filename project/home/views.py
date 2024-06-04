@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Question
 # Create your views here.
 # def home(request):
 #     products = [
@@ -13,12 +14,28 @@ from django.http import HttpResponse
 
 # def products(request):
 #     return HttpResponse("This is products page")
+def index(request):
+    latest_question=Question.objects.order_by('-pub_date')[:5]
+        # for question in latest_questions:
+    #     print(question.question_text)
+
+    # output = ", ".join([q.question_text for q in latest_questions])
+
+    questions_text=[]
+
+    for question in latest_question:
+            questions_text.append(question.question_text)
+
+    output='<br>'.join(questions_text)
+
+    return HttpResponse(output)
+
 def detail(request,question_id):
-        return HttpResponse("You're looking at the question %s." % question_id)
+    return HttpResponse("You're looking at the question %s." % question_id)
 
 def results(request,question_id):
-        respsonse = "You're looking at the results of question %s."
-        return HttpResponse(respsonse % question_id)
+    respsonse = "You're looking at the results of question %s."
+    return HttpResponse(respsonse % question_id)
 
 def vote(request, question_id):
-        return HttpResponse("You're voting on question %s." %question_id)
+    return HttpResponse("You're voting on question %s." %question_id)

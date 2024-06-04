@@ -149,7 +149,8 @@
 {% if latest_questions %}
     <ul>
     {% for question in latest_questions %}
-       <li><a href="/home/{{question.id}}"> {{question.question_text}}</a></li>
+       {% comment %} <li><a href="/home/{{question.id}}"> {{question.question_text}}</a></li> {% endcomment %}
+       <li><a href="{%url 'detail' question.id%}"> {{question.question_text}}</a></li>
     {% endfor %}
     </ul>
 {% else %}

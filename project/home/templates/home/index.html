@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -140,4 +140,18 @@
         <p>&copy; 2024 E-Shop. All rights reserved.</p>
     </footer>
 </body>
-</html>
+</html> {% endcomment %}
+<style>
+    body{
+        background:grey;
+    }
+</style>
+{% if latest_questions %}
+    <ul>
+    {% for question in latest_questions %}
+       <li><a href="/home/{{question.id}}"> {{question.question_text}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

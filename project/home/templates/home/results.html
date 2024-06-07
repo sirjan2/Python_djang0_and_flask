@@ -1,0 +1,13 @@
+<h1>The results of the question {{question.question_text}} are:</h1>
+<ul>
+    {%for choice in question.choice_set.all%}
+    <li>{{choice.choice_text}} | {{choice.votes }} 
+        {% comment %} vote{{choice.votes|pluralize}} {% endcomment %}
+        {%if choice.votes == 1%}
+        vote
+        {%else%}
+        votes
+        {%endif%}
+    </li>
+    {%endfor%}
+</ul>

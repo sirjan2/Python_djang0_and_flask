@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse,Http404
-from .models import Question
+from .models import Question,Choice
 # Create your views here.
 # def home(request):
 #     products = [
@@ -41,9 +41,19 @@ def detail(request,question_id):
 
     # return HttpResponse("You're looking at the question %s." % question_id)
 
-def results(request,question_id):
-    respsonse = "You're looking at the results of question %s."
-    return HttpResponse(respsonse % question_id)
+
 
 def vote(request, question_id):
-    return HttpResponse("You're voting on question %s." %question_id)
+    question=get_object_or_404(Question,pk=question_id)
+    try:
+        selected_choice=question.choice_set.get(pk=request.POST['choice'])
+        selected_choice.votes += 1
+        selected_choice.save()
+    except(KeyError, Choice.DoesNotExist):
+        return HttpResponse("Error occured data not found or invalid data")
+    return HttpResponse("Thanks for voting  for "+selected_choice.choice_text+" in "+question.question_text+".")
+
+def results(request,question_id):
+    question=get_object_or_404(Question,pk=question_id)
+    return render(request,"home/results.html",{'question':question})
+    

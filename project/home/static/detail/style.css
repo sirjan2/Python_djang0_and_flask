@@ -1,0 +1,32 @@
+.button {
+    background-color: rgb(71, 184, 245);
+    border-radius: 10px;
+    margin: 10px;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+}
+.button:hover{
+    background-color: rgb(39, 156, 219);
+}
+body{
+    text-align: center;
+    background:rgb(215, 215, 215);
+}
+fieldset{
+    display: inline;
+    border-radius: 20px;
+}
+.vote-image{
+    background-image: url(https://media.istockphoto.com/id/1435661636/vector/vote-elections-concept-template-for-background-banner-poster-with-text-inscription-vector.jpg?s=612x612&w=0&k=20&c=5ph7KbUyMhn5Q0-OS4qaewaAznZ9T9f3XJZEF9e2NsM=);
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin-top: 20px;
+    width: 100px;
+    height:70;
+}
+
+h1,label{
+   font-family: monospace; 
+}

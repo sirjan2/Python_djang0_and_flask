@@ -141,11 +141,13 @@
     </footer>
 </body>
 </html> {% endcomment %}
-<style>
+{% comment %} <style>
     body{
         background:grey;
     }
-</style>
+</style> {% endcomment %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'home/style.css' %}">
 {% if latest_questions %}
     <ul>
     {% for question in latest_questions %}

@@ -1,3 +1,8 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'detail/style.css' %}">
+{% comment %} <img width='100px' src="{%static '.png'%}" alt=""/> {% endcomment %}
+<br>
+<div class='vote-image'></div>
 <form action="./{{question.question_id}}vote/" method="post">
     {% csrf_token %}
     <fieldset>
